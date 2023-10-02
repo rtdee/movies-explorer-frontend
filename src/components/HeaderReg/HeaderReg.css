@@ -1,0 +1,35 @@
+.header-reg__link {
+  color: #000;
+  text-align: right;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  text-decoration: none;
+}
+
+.header-reg__link:hover {
+  color: rgba(0, 0, 0, .7);
+}
+
+.header-reg__login-btn {
+  width: 76px;
+  height: 32px;
+  border-radius: 3px;
+  background: #000;
+  color: #FFF;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  border: none;
+  margin-left: 30px;
+  cursor: pointer;
+  transition: all .2s ease-out;
+}
+
+.header-reg__login-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}

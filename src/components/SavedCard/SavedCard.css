@@ -1,0 +1,70 @@
+.saved-card {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+}
+
+.saved-card__img-container {
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  width: 360px;
+  height: 201px;
+}
+
+.saved-card__img-container:hover {
+  .saved-card__delete-btn {
+    opacity: 1;
+  }
+}
+
+.saved-card__img {
+  width: 360px;
+  height: 201px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.saved-card__text-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px 0 14px;
+}
+
+.saved-card__title {
+  color: #000;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.saved-card__duration {
+  color: #A0A0A0;
+  text-align: center;
+  font-family: Inter;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 10px;
+}
+
+.saved-card__delete-btn {
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  background-color: #FFF;
+  background-image: url('../../images/x.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  border: none;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  padding: 0;
+}

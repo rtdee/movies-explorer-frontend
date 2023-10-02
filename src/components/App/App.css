@@ -1,0 +1,21 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', Arial, sans-serif;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+@media screen and (min-width: 430px) and (max-width: 768px) {
+  .app {
+    max-width: 768px;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 430px) {
+  .app {
+    max-width: 430px;
+  }
+}

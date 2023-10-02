@@ -1,0 +1,11 @@
+.header-menu-btn {
+  width: 44px;
+  height: 44px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  background-image: url('../../images/navmenu.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+}

@@ -1,0 +1,265 @@
+.student {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: center;
+  max-width: 1280px;
+  margin: 110px auto 0;
+}
+
+.student__header {
+  color: #000;
+  font-family: Inter;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+}
+
+.student__divider {
+  border-bottom: 1px solid #000;
+  height: 1px;
+  width: 1140px;
+  align-self: center;
+}
+
+.student__text-container {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+}
+
+.student__name {
+  color: #000;
+  font-family: Inter;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -2px;
+  margin: 0 0 18px;
+}
+
+.student__career {
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  margin: 0 0 26px;
+}
+
+.student__about {
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  margin: 0 0 99px;
+}
+
+.student__img {
+  display: flex;
+  align-self: flex-end;
+  width: 270px;
+  height: 327px;
+  flex-shrink: 0;
+  border-radius: 10px;
+}
+
+.student__link {
+  color: #000;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal; 
+  text-decoration: none;
+}
+
+.student__link:hover {
+  opacity: .7;
+}
+
+.portfolio {
+  margin: 100px 0 0;
+  align-self: center;
+}
+
+.portfolio__text {
+  color: #A0A0A0;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0 0 25px;
+}
+
+.portfolio__link {
+  display: flex;
+  color: #000;
+  font-family: Inter;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: -1.2px;
+  text-decoration: none;
+  justify-content: space-between;
+  align-items: center;
+  height: 89px;
+}
+
+.portfolio__link:hover {
+  opacity: .7;
+}
+
+.portfolio__divider {
+  width: 1140px;
+  height: 1px;
+  border-bottom: #E8E8E8 solid 1px ;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  margin: 66px 0 0;
+  align-self: center;
+}
+
+@media screen and (min-width: 700px) and (max-width: 1200px) {
+  .student {
+    max-width: 768px;
+    margin: 90px 0 0;
+  }
+
+  .student__header {
+    margin: 0 50px 23px;
+  }
+
+  .student__divider {
+    width: 668px;
+  }
+
+  .student__text-container {
+    margin: 0 49px 0 0;
+  }
+
+  .student__name {
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.6px;
+  }
+
+  .student__career {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .student__about {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .student__img {
+    width: 255px;
+    height: 307px;
+  }
+
+  .wrapper {
+    width: 87%;
+  }
+
+  .portfolio__divider {
+    width: 668px;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 700px) {
+  .student {
+    max-width: 430px;
+    padding: 18px;
+  }
+
+  .student__header {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+    margin: 0 0 28px;
+  }
+
+  .student__divider {
+    width: 100%;
+  }
+
+  .wrapper {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .student__text-container {
+    width: 100%;
+  }
+
+  .student__name {
+    font-size: 30px;
+    letter-spacing: -1.2px;
+    margin: 40px 0 20px;
+  }
+
+  .student__career {
+    font-size: 11px;
+    line-height: 16px;
+    margin: 0 0 20px;
+  }
+
+  .student__about {
+    font-size: 11px;
+    line-height: 16px;
+    margin: 0 0 40px;
+  }
+
+  .student__img {
+    align-self: center;
+    width: 292px;
+    height: 352px;
+  }
+
+  .portfolio {
+    margin: 70px 0 0;
+    width: 100%;
+  }
+
+  .portfolio__text {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0 0 20px;
+  }
+
+  .portfolio__divider {
+    width: 100%;
+  }
+
+  .portfolio__link {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.72px;
+    height: 67px;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 430px) {
+  .student {
+    max-width: 320px;
+    padding: 18px;
+  }
+}
