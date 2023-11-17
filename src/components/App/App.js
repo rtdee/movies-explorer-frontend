@@ -8,7 +8,6 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
-import SavedMovies from '../SavedMovies/SavedMovies';
 import Header from '../Header/Header';
 import Profile from '../Profile/Profile';
 import NavMenu from '../NavMenu/NavMenu';
@@ -33,13 +32,15 @@ function App() {
   function FooterLayout() {
     return (
       <>
-        <Outlet />
+        <main>
+          <Outlet />
+        </main>
         <Footer />
       </>
     )
   }
 
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(true);
   const [isNavMenuOpened, setIsNavMenuOpened] = React.useState(false);
 
   function handleCloseNavMenu() {
@@ -66,7 +67,7 @@ function App() {
 
   function handleLogout() {
     setLoggedIn(false);
-    navigate('/login');
+    navigate('/');
   }
 
 
@@ -75,9 +76,9 @@ function App() {
       <Routes>
         <Route element={<HeaderLayout />}>
           <Route element={<FooterLayout />}>
-            <Route path='/' element={<Main />} />
-            <Route path='/movies' element={<Movies />} />
-            <Route path='/saved-movies' element={<SavedMovies />} />
+              <Route path='/' element={<Main />} />
+              <Route path='/movies' element={<Movies isSaved={false}/>} />
+              <Route path='/saved-movies' element={<Movies isSaved={true} />} />
           </Route>
           <Route path='/profile' element={
             <Profile onEditProfile={handleEditProfile}

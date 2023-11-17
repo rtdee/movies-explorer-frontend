@@ -3,11 +3,10 @@ import './Header.css';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
-import logo from '../../images/logo.svg';
-
 import HeaderNav from '../HeaderNav/HeaderNav';
 import HeaderReg from '../HeaderReg/HeaderReg';
 import HeaderMenu from '../HeaderMenu/HeaderMenu';
+import Logo from '../Logo/Logo';
 
 function Header(props) {
   const location = useLocation();
@@ -30,7 +29,7 @@ function Header(props) {
 
   return (
     <header className={`header ${location.pathname === '/' ? 'header_location_land' : ''}`}>
-      <img className='header__logo' src={logo} alt='лого' />
+      <Logo />
       {headerElement}
     </header>
   );

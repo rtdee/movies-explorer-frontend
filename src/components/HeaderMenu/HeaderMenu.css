@@ -9,3 +9,11 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+@media screen and (min-width: 0px) and (max-width: 720px) {
+  .header-menu-btn {
+    width: 23px;
+    height: 23px;
+    margin-right: 9px;
+  }
+}

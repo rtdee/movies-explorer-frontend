@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 524px;
+  min-height: 524px;
   background-color: #F3C1F8;
 }
 
@@ -14,20 +14,16 @@
   display: flex;
 }
 
-.promo__logo {
+.promo::before {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 320px;
-  height: 320px;
+  top: 155px;
+  content: url('../../images/promologo.svg');
 }
 
 .promo__header {
   display: flex;
   color: #000;
   text-align: center;
-  font-family: Inter;
   font-size: 50px;
   font-style: normal;
   font-weight: 400;
@@ -37,34 +33,28 @@
   margin: 0;
 }
 
-@media screen and (min-width: 700px) and (max-width: 768px) {
+@media screen and (min-width: 600px) and (max-width: 768px) {
   .promo {
-    height: 784px;
-  }
-}
-
-@media screen and (min-width: 600px) and (max-width: 700px) {
-  .promo {
-    height: 784px;
+    min-height: 784px;
   }
 
-  .promo__container {
-    width: 500px;
+  .promo::before {
+    top: 298px;
   }
 
   .promo__header {
-    font-size: 45px;
+    margin-top: 25px;
   }
 }
 
 @media screen and (min-width: 0px) and (max-width: 600px) {
   .promo {
-    height: 570px;
+    min-height: 570px;
   }
 
-  .promo__logo {
-    width: 248px;
-    height: 248px;
+  .promo::before {
+    transform: scale(77%);
+    margin-top: 25px;
   }
 
   .promo__container {

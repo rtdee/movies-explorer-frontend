@@ -8,7 +8,7 @@ function Footer() {
 
   return (
     <footer className='footer'>
-      <p className='footer__text'>Учебный проект Яндекс.Практикум x BeatFilm.</p>
+      <h1 className='footer__text'>Учебный проект Яндекс.Практикум x BeatFilm.</h1>
       <div className='footer__divider'></div>
       <div className='footer__container'>
         <p className='footer__container-item footer__year'>&copy; {currentYear}</p>

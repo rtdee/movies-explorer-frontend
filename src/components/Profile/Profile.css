@@ -9,7 +9,6 @@
   margin: 0;
   color: #000;
   text-align: center;
-  font-family: Inter;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -39,7 +38,6 @@
 .profile-form__label {
   margin: 0;
   color: #000;
-  font-family: Inter;
   font-size: 11px;
   font-style: normal;
   font-weight: 500;
@@ -51,13 +49,16 @@
   outline: none;
   color: #000;
   text-align: right;
-  font-family: Inter;
   font-size: 11px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   width: max-content;
   border: none;
+}
+
+.profile-form__input:focus {
+  color: #a0a0a0;
 }
 
 .profile-form__links {
@@ -70,10 +71,6 @@
   margin-top: 210px;
 }
 
-.profile-form__links-item {
-  display: flex;
-}
-
 .profile-form__link {
   margin: 0;
   cursor: pointer;
@@ -81,7 +78,6 @@
   text-decoration: none;
   line-height: normal;
   text-align: center;
-  font-family: Inter;
   font-size: 13px;
   font-style: normal;
 }
@@ -103,12 +99,17 @@
 
 @media screen and (min-width: 430px) and (max-width: 768px) {
   .profile {
-    margin-top: 263px;
+    margin-top: 236px;
   }
 
   .profile__title {
-    margin-bottom: 96px;
+    margin-bottom: 95px;
   }
+
+  .profile-form__links {
+    margin-top: 207px;
+  }
+
 }
 
 @media screen and (min-width: 0px) and (max-width: 430px) {
@@ -124,7 +125,7 @@
     width: 260px;
   }
   .profile-form__input-container {
-   width: 260px;
+    width: 260px;
   }
 
   .profile-form__links {

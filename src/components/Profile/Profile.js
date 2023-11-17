@@ -15,6 +15,12 @@ function Profile(props) {
     setEmail(evt.target.value);
   }
 
+  const [isInputDisabled, setIsInputDisabled] = React.useState(true);
+
+  function enableInput() {
+    setIsInputDisabled(false);
+  }
+
   return (
     <div className='profile'>
       <h1 className='profile__title'>Привет, Виталий!</h1>
@@ -31,6 +37,7 @@ function Profile(props) {
             maxLength='30'
             value={username}
             onChange={handleUsernameInput}
+            disabled={isInputDisabled}
           />
         </div>
         <div className='profile-form__divider'></div>
@@ -46,12 +53,13 @@ function Profile(props) {
             maxLength='30'
             value={email}
             onChange={handleEmailInput}
+            disabled={isInputDisabled}
           />
         </div>
-        <ul className='profile-form__links'>
-          <li className='profile-form__links-item'><Link className='profile-form__link profile-form__edit-link' to='#' onClick={props.onEditProfile}>Редактировать</Link></li>
-          <li className='profile-form__links-item'><Link className='profile-form__link profile-form__logout-link' to='#' onClick={props.onLogout}>Выйти из аккаунта</Link></li>
-        </ul>
+        <div className='profile-form__links'>
+          <div className='profile-form__link profile-form__edit-link' onClick={enableInput}>Редактировать</div>
+          <Link className='profile-form__link profile-form__logout-link' to='/' onClick={props.onLogout}>Выйти из аккаунта</Link>
+        </div>
       </form>
     </div>
   )

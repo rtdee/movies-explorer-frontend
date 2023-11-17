@@ -21,7 +21,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-items: flex-end;
   background-color: #fff;
   width: 520px;
 }
@@ -37,7 +36,7 @@
   cursor: pointer;
   padding: 0;
   align-self: flex-end;
-  margin: 22px 22px 0 0;
+  margin: 27px 27px 0 0;
 }
 
 .nav-menu__links {
@@ -47,7 +46,7 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin: 105px 0 0;
+  margin: 111px 0 0;
 }
 
 .nav-menu__links-item {
@@ -64,7 +63,6 @@
   color: #000;
   text-align: center;
   font-feature-settings: 'clig' off, 'liga' off;
-  font-family: Inter;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -76,13 +74,14 @@
   opacity: .7;
 }
 
-.nav-menu__link:active {
+.nav-menu__link_active {
   text-decoration: underline 2px solid #000;
   text-underline-offset: 7px;
 }
 
-.nav-menu__profile-btn {
-  margin: 621px 0 0;
+.profile-btn_location_navmenu {
+  margin: auto;
+  padding-top: 51.5vh;
 }
 
 

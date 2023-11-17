@@ -9,12 +9,6 @@
   flex-direction: column;
 }
 
-.register__logo {
-  width: 38px;
-  height: 38px;
-  align-self: flex-start;
-}
-
 .register__header {
   color: #000;
   font-size: 24px;
@@ -50,13 +44,16 @@
   border-radius: 8px;
   background-color: #F9F9F9;
   color: #000;
-  font-family: Inter;
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   padding: 15px;
   margin: 10px 0 10px;
+}
+
+.register-form__input:focus {
+  outline: solid 1px #A0A0A0;
 }
 
 .register-form__input_error {
@@ -66,7 +63,6 @@
 .register-form__error {
   visibility: hidden;
   color: #FF4062;
-  font-family: Inter;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
@@ -88,7 +84,7 @@
   cursor: pointer;
   color: #FFF;
   text-align: center;
-  font-family: Inter;
+  
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -105,7 +101,7 @@
   margin: 0;
   color: #A0A0A0;
   text-align: center;
-  font-family: Inter;
+  
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -116,7 +112,6 @@
   text-decoration: none;
   color: #000;
   text-align: center;
-  font-family: Inter;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
