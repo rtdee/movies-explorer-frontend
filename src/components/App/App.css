@@ -19,3 +19,7 @@
     max-width: 430px;
   }
 }
+
+.app * {
+  border: 1px black solid;
+}

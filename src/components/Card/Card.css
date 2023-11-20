@@ -9,22 +9,20 @@
   cursor: pointer;
   position: relative;
   width: 360px;
-  height: 201px;
+  min-height: 201px;
 }
 
-.card__img-container:hover {
-  .card__save-btn {
-    opacity: 1;
-  }
-  
-  .saved-card__delete-btn {
-    opacity: 1;
-  }
+.card__img-container:hover .card__save-btn {
+  opacity: 1;
+}
+
+.card__img-container:hover .saved-card__delete-btn {
+  opacity: 1;
 }
 
 .card__img {
   width: 360px;
-  height: 201px;
+  min-height: 201px;
   border-radius: 6px;
   object-fit: cover;
 }
@@ -32,7 +30,7 @@
 .card__save-btn {
   opacity: 0;
   width: 72px;
-  height: 21px;
+  min-height: 21px;
   border-radius: 30px;
   background-color: #F9F9F9;
   color: #000;
@@ -57,7 +55,7 @@
 
 .card__save-btn_active {
   width: 21px;
-  height: 21px;
+  min-height: 21px;
   border-radius: 50%;
   background-color: #FF4062;
   /*background-image: url('../../images/checkmark.svg');*/
@@ -98,7 +96,7 @@
 
 .saved-card__delete-btn {
   width: 21px;
-  height: 21px;
+  min-height: 21px;
   border-radius: 50%;
   background-color: #FFF;
   background-image: url('../../images/x.svg');
@@ -125,7 +123,7 @@
 
   .card__img {
     width: 340px;
-    height: 190px;
+    min-height: 190px;
   }
 }
 
@@ -141,7 +139,7 @@
 
   .card__img {
     width: 300px;
-    height: 168px;
+    min-height: 168px;
   }
 
   .card__title {

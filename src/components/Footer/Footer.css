@@ -18,7 +18,7 @@
 }
 
 .footer__divider {
-  height: 1px;
+  min-height: 1px;
   border-bottom: 1px solid #E8E8E8;
   width: 100%;
 }
@@ -65,7 +65,7 @@
 
 @media screen and (min-width: 0px) and (max-width: 430px) {
   .footer {
-    height: 253px;
+    min-height: 253px;
     padding: 79px 10px 20px;
   }
 

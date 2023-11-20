@@ -35,7 +35,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100px;
-  height: 32px;
+  min-height: 32px;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -43,18 +43,16 @@
   margin-left: 50px;
 }
 
-.profile-btn:hover {
-  .profile-btn__icon {
-    background-color: #2BE080;
-  }
+.profile-btn:hover .profile-btn__icon {
+  background-color: #2BE080;
+}
 
-  .profile-btn__icon_location_land {
-    background-image: url(../../images/profile_black.svg);
-  }
+.profile-btn:hover .profile-btn__icon_location_land {
+  background-image: url(../../images/profile_black.svg);
+}
 
-  .profile-btn__text {
-    color: rgba(0, 0, 0, .7);
-  }
+.profile-btn:hover .profile-btn__text {
+  color: rgba(0, 0, 0, .7);
 }
 
 .profile-btn__text {
@@ -70,10 +68,10 @@
   background-position: center;
   background-repeat: no-repeat;
   width: 10px;
-  height: 10px;
+  min-height: 10px;
   border-radius: 6px;
   width: 30px;
-  height: 30px;
+  min-height: 30px;
   transition: background-color .2s ease-out;
 }
 
@@ -82,7 +80,7 @@
   background-color: #000;
 }
 
-.profile-btn__icon__location_main {
+.profile-btn__icon_location_main {
   background-image: url(../../images/profile_black.svg);
   background-color: #F9F9F9;
 }

@@ -21,12 +21,17 @@ function Profile(props) {
     setIsInputDisabled(false);
   }
 
+  function handleClickSave(evt) {
+    evt.preventDefault();
+    setIsInputDisabled(true);
+  }
+
   return (
     <div className='profile'>
       <h1 className='profile__title'>Привет, Виталий!</h1>
       <form className='profile-form'>
         <div className='profile-form__input-container'>
-          <label className='profile-form__label' for='username-input'>Имя</label>
+          <label className='profile-form__label' htmlFor='username-input'>Имя</label>
           <input
             className='profile-form__input profile-form__input_type_username'
             type='text'
@@ -42,7 +47,7 @@ function Profile(props) {
         </div>
         <div className='profile-form__divider'></div>
         <div className='profile-form__input-container'>
-          <label className='profile-form__label' for='email-input'>E-mail</label>
+          <label className='profile-form__label' htmlFor='email-input'>E-mail</label>
           <input
             className='profile-form__input profile-form__input_type_email'
             type='email'
@@ -57,8 +62,12 @@ function Profile(props) {
           />
         </div>
         <div className='profile-form__links'>
-          <div className='profile-form__link profile-form__edit-link' onClick={enableInput}>Редактировать</div>
-          <Link className='profile-form__link profile-form__logout-link' to='/' onClick={props.onLogout}>Выйти из аккаунта</Link>
+          {!isInputDisabled ? <button className='profile-form__button' onClick={handleClickSave}>Сохранить</button> :
+            <>
+            <div className='profile-form__link profile-form__edit-link' onClick={enableInput}>Редактировать</div>
+            <Link className='profile-form__link profile-form__logout-link' to='/' onClick={props.onLogout}>Выйти из аккаунта</Link>
+            </>
+          }
         </div>
       </form>
     </div>

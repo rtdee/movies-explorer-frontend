@@ -36,7 +36,7 @@
 
 .register-form__input {
   width: 396px;
-  height: 46px;
+  min-height: 46px;
   box-sizing: border-box;
   border: 0;
   outline: none;
@@ -67,7 +67,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  height: 10px;
+  min-height: 10px;
 }
 
 .register-form__error_visible {
@@ -76,7 +76,7 @@
 
 .register-form__submit-button {
   width: 396px;
-  height: 45px;
+  min-height: 45px;
   border-radius: 3px;
   background-color: #000;
   text-align: center;

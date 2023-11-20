@@ -19,7 +19,7 @@ function Card(props) {
         <button className={`card__save-btn ${isFilmSaved && 'card__save-btn_active'}`} onClick={handleSaveFilmClick}>{!isFilmSaved && 'Сохранить'}</button>}
       </div>
       <div className='card__text-container'>
-        <h1 className='card__title'>33 слова о дизайне</h1>
+        <h2 className='card__title'>33 слова о дизайне</h2>
         <p className='card__duration'>1ч 17м</p>
       </div>
     </article>

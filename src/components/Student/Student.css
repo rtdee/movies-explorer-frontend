@@ -19,7 +19,7 @@
 .student::before {
   content: '';
   border-bottom: 1px solid #000;
-  height: 1px;
+  min-height: 1px;
   width: 1140px;
   align-self: center;
   position: relative;
@@ -67,7 +67,7 @@
   display: flex;
   align-self: flex-end;
   width: 270px;
-  height: 327px;
+  min-height: 327px;
   flex-shrink: 0;
   border-radius: 10px;
 }
@@ -111,7 +111,7 @@
   text-decoration: none;
   justify-content: space-between;
   align-items: center;
-  height: 88px;
+  min-height: 88px;
 }
 
 .portfolio__link::after {
@@ -124,7 +124,7 @@
 
 .portfolio__divider {
   width: 1140px;
-  height: 1px;
+  min-height: 1px;
   border-bottom: #E8E8E8 solid 1px ;
 }
 
@@ -139,8 +139,11 @@
 
 @media screen and (min-width: 700px) and (max-width: 1200px) {
   .student {
-    max-width: 768px;
+    width: 729px;
     margin: 8px auto 0;
+    padding: 0;
+    position: relative;
+    left: -20px;
   }
 
   .student__header {
@@ -148,7 +151,7 @@
   }
 
   .student::before {
-    width: 668px;
+    width: 629px;
     position: relative;
     top: 50px;
   }
@@ -179,7 +182,7 @@
 
   .student__img {
     width: 255px;
-    height: 307px;
+    min-height: 307px;
     margin: auto;
   }
 
@@ -207,8 +210,8 @@
 
 @media screen and (min-width: 0px) and (max-width: 700px) {
   .student {
-    max-width: 430px;
-    padding: 18px;
+    width: 89vw;
+    padding: 0px;
   }
 
   .student__header {
@@ -217,7 +220,7 @@
     margin: 0 0 28px;
   }
 
-  .student__divider {
+  .student::before {
     width: 100%;
   }
 
@@ -247,12 +250,13 @@
     font-size: 11px;
     line-height: 16px;
     margin: 0 0 40px;
+    width: 310px;
   }
 
   .student__img {
     align-self: center;
     width: 292px;
-    height: 352px;
+    min-height: 352px;
   }
 
   .portfolio {
@@ -274,13 +278,17 @@
     font-size: 18px;
     line-height: 28px;
     letter-spacing: -0.72px;
-    height: 67px;
+    min-height: 67px;
   }
 }
 
 @media screen and (min-width: 0px) and (max-width: 430px) {
   .student {
     max-width: 320px;
-    padding: 18px;
+    padding: 0px;
+  }
+
+  .student__about {
+    max-width: 300px;
   }
 }

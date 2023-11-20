@@ -25,7 +25,7 @@
 .profile-form__divider {
   border-bottom: 1px solid #E8E8E8;
   width: 410px;
-  height: 1px;
+  min-height: 1px;
   margin: 16px 0;
 }
 
@@ -95,6 +95,20 @@
 .profile-form__logout-link {
   color: #FF4062;
   font-weight: 500;
+}
+
+.profile-form__button {
+  width: 410px;
+  height: 45px;
+  border-radius: 3px;
+  background: #3456F3;
+  color: #FFF;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 430px) and (max-width: 768px) {

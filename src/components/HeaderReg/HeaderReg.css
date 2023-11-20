@@ -1,35 +1,39 @@
 .header-reg__link {
+  display: inline-flex;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.header-reg__link_type_signup {
   color: #000;
   text-align: right;
-  
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
-  text-decoration: none;
 }
 
-.header-reg__link:hover {
+.header-reg__link_type_signup:hover {
   color: rgba(0, 0, 0, .7);
 }
 
-.header-reg__login-btn {
+.header-reg__link_type_login {
   width: 76px;
   height: 32px;
   border-radius: 3px;
-  background: #000;
+  background-color: #000;
   color: #FFF;
-  
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
   border: none;
   margin-left: 30px;
-  cursor: pointer;
   transition: all .2s ease-out;
 }
 
-.header-reg__login-btn:hover {
+.header-reg__link_type_login:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }

@@ -36,14 +36,20 @@
 @media screen and (min-width: 600px) and (max-width: 768px) {
   .promo {
     min-height: 784px;
+    max-width: 768px;
   }
 
   .promo::before {
     top: 298px;
   }
 
+  .promo__container {
+    width: 80%;
+  }
+
   .promo__header {
     margin-top: 25px;
+    align-self: center;
   }
 }
 

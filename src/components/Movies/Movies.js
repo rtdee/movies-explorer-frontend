@@ -26,11 +26,11 @@ function Movies(props) {
           </div>
           <div className='form__divider'></div>
           <div className='form__wrapper'>
-            <input className='form__switch' type='checkbox' id='shortfilm' checked={isShorfilmChecked && true}></input>
+            <input className='form__switch' type='checkbox' id='shortfilm' defaultChecked={isShorfilmChecked && true}></input>
             <div className={`switch-base ${isShorfilmChecked && 'switch-base_active'}`} onClick={handleSwitchClick}>
               <div className={`switch-inner ${isShorfilmChecked && 'switch-inner_active'}`}></div>
             </div>
-            <label className='form__switch-label' for='shortfilm'>Короткометражки</label>
+            <label className='form__switch-label' htmlFor='shortfilm'>Короткометражки</label>
           </div>
         </form>
       </search>

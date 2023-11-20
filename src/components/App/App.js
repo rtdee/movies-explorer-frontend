@@ -20,7 +20,7 @@ function App() {
     return (
       <>
         <Header loggedIn={loggedIn}
-                onClickLogin={handleClickLogin}
+                // onClickLogin={handleClickLogin}
                 onClickProfile={handleClickProfile}
                 onClickMenu={setIsNavMenuOpened}
         />
@@ -40,16 +40,16 @@ function App() {
     )
   }
 
-  const [loggedIn, setLoggedIn] = React.useState(true);
+  const [loggedIn, setLoggedIn] = React.useState(false);
   const [isNavMenuOpened, setIsNavMenuOpened] = React.useState(false);
 
   function handleCloseNavMenu() {
     setIsNavMenuOpened(false);
   }
 
-  function handleClickLogin() {
-    navigate('/login');
-  }
+  // function handleClickLogin() {
+  //   navigate('/login');
+  // }
 
   function handleClickProfile() {
     navigate('/profile');
@@ -76,9 +76,9 @@ function App() {
       <Routes>
         <Route element={<HeaderLayout />}>
           <Route element={<FooterLayout />}>
-              <Route path='/' element={<Main />} />
-              <Route path='/movies' element={<Movies isSaved={false}/>} />
-              <Route path='/saved-movies' element={<Movies isSaved={true} />} />
+            <Route path='/' element={<Main />} />
+            <Route path='/movies' element={<Movies isSaved={false}/>} />
+            <Route path='/saved-movies' element={<Movies isSaved={true} />} />
           </Route>
           <Route path='/profile' element={
             <Profile onEditProfile={handleEditProfile}

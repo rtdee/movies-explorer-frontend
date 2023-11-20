@@ -61,7 +61,7 @@ function Register(props) {
         <Logo />
         <h1 className='register__header'>Добро пожаловать!</h1>
         <form className='register-form' name='registerform' noValidate onSubmit={handleSubmit}>
-          <label className='register-form__label' for='username-input'>Имя</label>
+          <label className='register-form__label' htmlFor='username-input'>Имя</label>
           <input
             className={`register-form__input register-form__input_type_username ${usernameErrorVisible && 'register-form__input_error'}`}
             type='text'
@@ -74,7 +74,7 @@ function Register(props) {
             placeholder='Имя'
             onChange={handleUsernameInput}
           />
-          <label className='register-form__label' for='email-input'>E-mail</label>
+          <label className='register-form__label' htmlFor='email-input'>E-mail</label>
           <input
             className={`register-form__input register-form__input_type_email ${emailErrorVisible && 'register-form__input_error'}`}
             type='email'
@@ -87,7 +87,7 @@ function Register(props) {
             placeholder='E-mail'
             onChange={handleEmailInput}
           />
-          <label className='register-form__label' for='password-input'>Пароль</label>
+          <label className='register-form__label' htmlFor='password-input'>Пароль</label>
           <input
             className={`register-form__input register-form__input_type_password ${passwordErrorVisible && 'register-form__input_error'}`}
             type='password'

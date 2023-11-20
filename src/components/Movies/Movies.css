@@ -10,7 +10,7 @@
 .movies__search {
   display: flex;
   flex-direction: row;
-  height: 72px;
+  min-height: 72px;
   border-radius: 9px;
   background-color: #FDFDFD;
   box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
@@ -65,7 +65,7 @@
   border-radius: 48px;
   background: #000;
   width: 58.65px;
-  height: 34px;
+  min-height: 34px;
   color: #FFF;
   text-align: center;
   font-feature-settings: 'clig' off, 'liga' off;
@@ -84,7 +84,7 @@
 
 .form__divider {
   width: 1px;
-  height: 40px;
+  min-height: 40px;
   border-right: 1px solid #CBCBCB;
   margin: 0 29px 0 19px;
   position: relative;
@@ -103,7 +103,7 @@
   flex-direction: column;
   justify-content: center;
   width: 34px;
-  height: 14px;
+  min-height: 14px;
   border-radius: 20px;
   background-color: #EBEBEB;
   transition: all 0.2s ease-in-out;
@@ -116,7 +116,7 @@
 
 .switch-inner {
   width: 10px;
-  height: 10px;
+  min-height: 10px;
   border-radius: 10px;
   background-color: #F5F5F5;
   margin: 0 2px;
@@ -140,7 +140,7 @@
 
 .movies__divider {
   width: 1140px;
-  height: 1px;
+  min-height: 1px;
   border-bottom: 1px #E8E8E8 solid;
   margin-bottom: 10px;
 }
@@ -150,12 +150,12 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 50px 30px;
   align-self: center;
-  padding: 70px 70px 28px;
+  margin: 70px 70px 28px;
 }
 
 .movies__button {
   width: 320px;
-  height: 36px;
+  min-height: 36px;
   border-radius: 6px;
   background-color: #F9F9F9;
   border: none;
@@ -168,6 +168,14 @@
 .movies__button:hover {
   background-color: #A0A0A0;
   color: #F9F9F9;
+}
+
+.hidden .movies__container > .card {
+  display: none;
+}
+
+.hidden .movies__container > .card:nth-child(-n+12) {
+  display: flex;
 }
 
 @media screen and (min-width: 720px) and (max-width: 1180px) {
@@ -214,14 +222,12 @@
     gap: 38px 29px;
   }
 
-  .hidden {
-    .movies__container > .card {
-      display: none;
-    }
+  .hidden .movies__container > .card {
+    display: none;
+  }
 
-    .movies__container > .card:nth-child(-n+8) {
-      display: flex;
-    }
+  .hidden .movies__container > .card:nth-child(-n+8) {
+    display: flex;
   }
 
   .movies__divider {
@@ -248,7 +254,7 @@
     margin: 0;
     padding: 0;
     width: 300px;
-    height: 80px;
+    min-height: 80px;
   }
 
   .form {
@@ -263,7 +269,7 @@
   .form__input {
     font-size: 15px;
     width: 140px;
-    height: 1px;
+    min-height: 1px;
     position: relative;
     top: 18px;
     left: -32px;
@@ -302,14 +308,12 @@
     grid-template-columns: 300px;
   }
 
-  .hidden {
-    .movies__container > .card {
-      display: none;
-    }
+  .hidden .movies__container > .card {
+    display: none;
+  }
 
-    .movies__container > .card:nth-child(-n+5) {
-      display: flex;
-    }
+  .hidden .movies__container > .card:nth-child(-n+5) {
+    display: flex;
   }
 
   .movies__divider {

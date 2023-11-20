@@ -51,7 +51,7 @@ function Login(props) {
         <Logo />
         <h1 className='login__header'>Рады видеть!</h1>
         <form className='login-form' name='loginform' noValidate>
-          <label className='login-form__label' for='email-input'>E-mail</label>
+          <label className='login-form__label' htmlFor='email-input'>E-mail</label>
           <input
             className='login-form__input login-form__input_type_email'
             type='email'
@@ -64,7 +64,7 @@ function Login(props) {
             onChange={handleEmailInput}
             placeholder='E-mail'
           />
-          <label className='login-form__label' for='password-input'>Пароль</label>
+          <label className='login-form__label' htmlFor='password-input'>Пароль</label>
           <input
             className='login-form__input login-form__input_type_password'
             type='password'
