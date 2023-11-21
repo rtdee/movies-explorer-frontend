@@ -30,7 +30,7 @@ function Movies(props) {
             <div className={`switch-base ${isShorfilmChecked && 'switch-base_active'}`} onClick={handleSwitchClick}>
               <div className={`switch-inner ${isShorfilmChecked && 'switch-inner_active'}`}></div>
             </div>
-            <label className='form__switch-label' htmlFor='shortfilm'>Короткометражки</label>
+            <label className='form__switch-label' htmlFor='shortfilm' onClick={handleSwitchClick}>Короткометражки</label>
           </div>
         </form>
       </search>

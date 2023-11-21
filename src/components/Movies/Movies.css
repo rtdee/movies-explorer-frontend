@@ -136,6 +136,7 @@
   font-weight: 400;
   line-height: 18px;
   margin: 0 30px 0 14px;
+  cursor: pointer;
 }
 
 .movies__divider {
@@ -248,6 +249,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
+    margin-top: 60px;
   }
   
   .movies__search {
@@ -261,8 +263,6 @@
     padding: 0;
     margin: 0;
     flex-direction: column;
-    margin: 0;
-    padding: 0%;
     width: 300px;
   }
   
@@ -306,13 +306,15 @@
   
   .movies__container {
     grid-template-columns: 300px;
+    position: relative;
+    top: 70px;
   }
 
-  .hidden .movies__container > .card {
+  .hidden + .movies__container > .card {
     display: none;
   }
 
-  .hidden .movies__container > .card:nth-child(-n+5) {
+  .hidden + .movies__container > .card:nth-child(-n+5) {
     display: flex;
   }
 

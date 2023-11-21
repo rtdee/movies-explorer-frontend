@@ -4,7 +4,7 @@
   align-items: flex-start;
   align-self: center;
   max-width: 1280px;
-  margin: 91px auto 0;
+  margin: 91px auto 27px;
 }
 
 .student__header {
@@ -111,7 +111,7 @@
   text-decoration: none;
   justify-content: space-between;
   align-items: center;
-  min-height: 88px;
+  height: 88px;
 }
 
 .portfolio__link::after {
@@ -125,7 +125,7 @@
 .portfolio__divider {
   width: 1140px;
   min-height: 1px;
-  border-bottom: #E8E8E8 solid 1px ;
+  border-bottom: #E8E8E8 solid 1px;
 }
 
 .wrapper {
@@ -183,7 +183,7 @@
   .student__img {
     width: 255px;
     min-height: 307px;
-    margin: auto;
+    margin-left: 8%;
   }
 
   .wrapper {
@@ -195,16 +195,18 @@
   }
 
   .portfolio {
-    margin-top: 91px;
+    margin: 85px 0 0 38px;
   }
 
   .portfolio__link {
     font-size: 28px;
     font-weight: 400;
+    height: 80px;
+    margin-bottom: -4px;
   }
 
   .portfolio__link::after {
-    margin-top: 10px;
+    margin-top: 5px;
   }
 }
 
@@ -286,9 +288,44 @@
   .student {
     max-width: 320px;
     padding: 0px;
+    margin: 0;
   }
 
   .student__about {
     max-width: 300px;
+  }
+
+  .student__header {
+    margin: -5px 0 0 -5px;
+  }
+
+  .student::before {
+    width: 102%;
+    top: 46px;
+  }
+
+  .student__img {
+    margin: 19px 0 0;
+  }
+
+  .wrapper {
+    width: 104%;
+  }
+
+  .student__name {
+    margin: 25px 0 7px;
+  }
+
+  .student__link {
+    margin-top: -5px;
+  }
+
+  .portfolio {
+    margin: 65px 0 0 -10px;
+  }
+
+  .portfolio__link {
+    width: 102%;
+    margin-top: -2px;
   }
 }

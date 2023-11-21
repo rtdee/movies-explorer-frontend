@@ -27,6 +27,7 @@ function Profile(props) {
   }
 
   return (
+    <main>
     <div className='profile'>
       <h1 className='profile__title'>Привет, Виталий!</h1>
       <form className='profile-form'>
@@ -43,6 +44,7 @@ function Profile(props) {
             value={username}
             onChange={handleUsernameInput}
             disabled={isInputDisabled}
+            placeholder='Ваше имя'
           />
         </div>
         <div className='profile-form__divider'></div>
@@ -59,6 +61,7 @@ function Profile(props) {
             value={email}
             onChange={handleEmailInput}
             disabled={isInputDisabled}
+            placeholder='Ваш E-mail'
           />
         </div>
         <div className='profile-form__links'>
@@ -71,6 +74,7 @@ function Profile(props) {
         </div>
       </form>
     </div>
+    </main>
   )
 }
 

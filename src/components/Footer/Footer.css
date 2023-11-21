@@ -59,14 +59,19 @@
 
 @media screen and (min-width: 0px) and (max-width: 768px) {
   .footer {
-    padding: 101px 30px 20px;
+    padding: 101px 31px 0;
+  }
+
+  .footer__container {
+    margin: 15px 0 0 0;
+    
   }
 }
 
 @media screen and (min-width: 0px) and (max-width: 430px) {
   .footer {
     min-height: 253px;
-    padding: 79px 10px 20px;
+    padding: 70px 10px 0px;
   }
 
   .footer__text {
@@ -75,7 +80,7 @@
 
   .footer__container {
     flex-direction: column-reverse;
-    margin: 30px 0 0;
+    margin: 10px 0 0;
   }
 
   .footer__container-item {
@@ -83,16 +88,22 @@
   }
 
   .footer__year {
+    margin-top: 10px;
     color: #A0A0A0;
   }
 
   .footer__container-links {
     flex-direction: column;
     align-items: center;
-    margin: 0 0 30px;
+    margin: 20px 0 0px;
   }
 
   .footer__link:first-of-type {
-    margin: 0 0 12px;
+    margin: 0 0px;
+    padding-bottom: 10px;
+  }
+
+  .footer__link:last-of-type {
+    padding-bottom: 10px;
   }
 }

@@ -1,9 +1,15 @@
+.header-reg {
+  display: flex;
+  align-items: center;
+}
+
 .header-reg__link {
-  display: inline-flex;
+  display: flex;
   text-decoration: none;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  margin: 0 7px;
 }
 
 .header-reg__link_type_signup {
@@ -36,4 +42,16 @@
 
 .header-reg__link_type_login:hover {
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+@media screen and (min-width: 0px) and (max-width: 700px) {
+  .header-reg__link {
+    font-size: 10px;
+    margin-left: 11px;
+  }
+
+  .header-reg__link_type_login {
+    width: 54px;
+    height: 26px;
+  }
 }

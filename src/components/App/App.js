@@ -20,7 +20,6 @@ function App() {
     return (
       <>
         <Header loggedIn={loggedIn}
-                // onClickLogin={handleClickLogin}
                 onClickProfile={handleClickProfile}
                 onClickMenu={setIsNavMenuOpened}
         />
@@ -46,10 +45,6 @@ function App() {
   function handleCloseNavMenu() {
     setIsNavMenuOpened(false);
   }
-
-  // function handleClickLogin() {
-  //   navigate('/login');
-  // }
 
   function handleClickProfile() {
     navigate('/profile');

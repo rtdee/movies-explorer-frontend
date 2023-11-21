@@ -46,6 +46,7 @@ function Login(props) {
   }, [emailErrorVisible, passwordErrorVisible])
   
   return (
+    <main>
     <div className='login'>
       <div className='login__container'>
         <Logo />
@@ -83,6 +84,7 @@ function Login(props) {
         <p className='login__text'>Ещё не зарегистрированы? <Link className='login__link' to='/signup'>Регистрация</Link></p>
       </div>
     </div>
+    </main>
   )
 }
 

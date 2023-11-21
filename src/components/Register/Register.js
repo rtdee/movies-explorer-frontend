@@ -56,6 +56,7 @@ function Register(props) {
     // props.onSubmit({email, password});
   }
   return (
+    <main>
     <div className='register'>
       <div className='register__container'>
         <Logo />
@@ -106,6 +107,7 @@ function Register(props) {
         <p className='register__text'>Уже зарегистрированы? <Link className='register__link' to='/login'>Войти</Link></p>
       </div>
     </div>
+    </main>
   )
 }
 

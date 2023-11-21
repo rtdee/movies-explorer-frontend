@@ -131,15 +131,17 @@
 @media screen and (min-width: 0px) and (max-width: 430px) {
   .card {
     width: 300px;
+    min-height: auto;
   }
 
   .card__img-container {
     width: 300px;
+    min-height: auto;
   }
 
   .card__img {
     width: 300px;
-    min-height: 168px;
+    min-height: 170px;
   }
 
   .card__title {
@@ -148,7 +150,7 @@
 
   .card__text-container {
     margin: 0;
-    margin-top: -32px;
+    margin-top: 0;
     padding: 0 5px 0 0;
   }
 
