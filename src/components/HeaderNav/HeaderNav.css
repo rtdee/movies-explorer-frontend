@@ -40,7 +40,7 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  margin-left: 50px;
+  margin: 0 8px 4px 50px;
 }
 
 .profile-btn:hover .profile-btn__icon {

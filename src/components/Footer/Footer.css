@@ -3,7 +3,7 @@
   justify-content: center;
   flex-direction: column;
   min-height: 172px;
-  padding: 110px 70px 0px;
+  padding: 110px 77px 0px;
 }
 
 .footer__text {
@@ -57,21 +57,28 @@
   opacity: .7;
 }
 
+.footer__year {
+  margin: 0 0 0 -16px;
+}
+
 @media screen and (min-width: 0px) and (max-width: 768px) {
   .footer {
     padding: 101px 31px 0;
   }
 
   .footer__container {
-    margin: 15px 0 0 0;
-    
+    margin: 20px 0 0 0;
+  }
+
+  .footer__year {
+    margin: 0;
   }
 }
 
 @media screen and (min-width: 0px) and (max-width: 430px) {
   .footer {
     min-height: 253px;
-    padding: 70px 10px 0px;
+    padding: 64px 10px 0px;
   }
 
   .footer__text {
@@ -88,8 +95,10 @@
   }
 
   .footer__year {
-    margin-top: 10px;
+    margin: 10px 0 0 0;
     color: #A0A0A0;
+    position: relative;
+    top: 13px;
   }
 
   .footer__container-links {

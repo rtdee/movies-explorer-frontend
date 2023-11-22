@@ -10,13 +10,13 @@ import Student from '../Student/Student';
 
 function Main() {
   return (
-    <section className='main'>
+    <main className='main'>
       <Promo />
       <NavTab />
       <AboutProject />
       <Techs />
       <Student />
-    </section>
+    </main>
   )
 }
 

@@ -115,15 +115,25 @@
 @media screen and (min-width: 430px) and (max-width: 768px) {
   .card {
     width: 340px;
+    min-height: 190px;
   }
 
   .card__img-container {
     width: 340px;
+    min-height: 190px;
   }
 
   .card__img {
     width: 340px;
     min-height: 190px;
+  }
+
+  .card__title {
+    margin: 25px 0 0 -14px;
+  }
+
+  .card__duration {
+    margin: 20px -14px 0 0;
   }
 }
 

@@ -9,7 +9,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  margin: 0 7px;
+  margin: 0 8px 0 0;
 }
 
 .header-reg__link_type_signup {
@@ -19,6 +19,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
+  margin: 0;
 }
 
 .header-reg__link_type_signup:hover {
@@ -44,14 +45,28 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-@media screen and (min-width: 0px) and (max-width: 700px) {
+@media screen and (min-width: 400px) and (max-width: 768px) {
+  .header-reg__link {
+    margin: 0 0 0 11px;
+  }
+
+  .header-reg__link_type_signup {
+    margin: 0 19px 0 0;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 400px) {
   .header-reg__link {
     font-size: 10px;
-    margin-left: 11px;
+    margin: auto;
   }
 
   .header-reg__link_type_login {
     width: 54px;
     height: 26px;
+  }
+
+  .header-reg__link_type_signup {
+    margin: 0 14px 0 0;
   }
 }

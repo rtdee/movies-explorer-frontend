@@ -92,8 +92,9 @@
 @media screen and (min-width: 700px) and (max-width: 1200px) {
   .techs {
     max-width: 768px;
-    position: relative;
-    top: -23px;
+    margin: 14px 0 0 0;
+    min-height: 500px;
+    max-height: 567px;
   }
 
   .techs__container {
@@ -103,7 +104,7 @@
   }
 
   .techs__header {
-    margin: 90px 50px 0;
+    margin: 90px 0 0 10px;
   }
 
   .techs::before {
@@ -113,8 +114,7 @@
   }
 
   .techs__strong {
-    margin-top: 103px;
-    margin-bottom: 21px;
+    margin: 103px 0 21px;
   }
 
   .techs__paragraph {
@@ -202,7 +202,7 @@
 @media screen and (min-width: 0px) and (max-width: 430px) {
   .techs {
     max-width: 320px;
-    margin: -10px 18px 0;
+    margin: 0px 18px 0;
     align-items: center;
   }
 
@@ -219,7 +219,7 @@
     content: '';
     border-bottom: 1px solid #000;
     position: relative;
-    top: -474px;
+    top: -461px;
   }
 
   .techs__header {
@@ -235,7 +235,7 @@
 
   .techs__paragraph {
     width: 260px;
-    margin: -19px 0 0;
+    margin: -13px 0 0;
   }
 
   .techs__icons-container {

@@ -31,15 +31,13 @@ function App() {
   function FooterLayout() {
     return (
       <>
-        <main>
-          <Outlet />
-        </main>
+        <Outlet />
         <Footer />
       </>
     )
   }
 
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(true);
   const [isNavMenuOpened, setIsNavMenuOpened] = React.useState(false);
 
   function handleCloseNavMenu() {

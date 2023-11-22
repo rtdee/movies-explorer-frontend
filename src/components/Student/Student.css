@@ -116,6 +116,7 @@
 
 .portfolio__link::after {
   content: '↗';
+  margin-top: 13px;
 }
 
 .portfolio__link:hover {
@@ -137,10 +138,10 @@
   align-self: center;
 }
 
-@media screen and (min-width: 700px) and (max-width: 1200px) {
+@media screen and (min-width: 730px) and (max-width: 1200px) {
   .student {
     width: 729px;
-    margin: 8px auto 0;
+    margin: 89px auto 0;
     padding: 0;
     position: relative;
     left: -20px;
@@ -151,13 +152,14 @@
   }
 
   .student::before {
-    width: 629px;
+    width: 91.7%;
+    margin: 0 0 0 40px;
     position: relative;
     top: 50px;
   }
 
   .student__text-container {
-    margin: 0 auto;
+    margin: 0 0 0 3px;
   }
 
   .student__name {
@@ -182,8 +184,9 @@
 
   .student__img {
     width: 255px;
-    min-height: 307px;
-    margin-left: 8%;
+    min-height: 300px;
+    max-height: 307px;
+    margin: 4px 0 0 53px;
   }
 
   .wrapper {
@@ -192,28 +195,29 @@
 
   .portfolio__divider {
     width: 668px;
+    margin: 0;
   }
 
   .portfolio {
-    margin: 85px 0 0 38px;
+    margin: 90px 0 0 38px;
   }
 
   .portfolio__link {
     font-size: 28px;
     font-weight: 400;
-    height: 80px;
-    margin-bottom: -4px;
+    height: 88px;
+    margin: 0;
   }
 
   .portfolio__link::after {
-    margin-top: 5px;
+    margin-top: 10px;
   }
 }
 
-@media screen and (min-width: 0px) and (max-width: 700px) {
+@media screen and (min-width: 0px) and (max-width: 730px) {
   .student {
     width: 89vw;
-    padding: 0px;
+    padding: 0;
   }
 
   .student__header {
@@ -296,16 +300,16 @@
   }
 
   .student__header {
-    margin: -5px 0 0 -5px;
+    margin: 0 0 0 -5px;
   }
 
   .student::before {
-    width: 102%;
-    top: 46px;
+    width: 102.5%;
+    top: 49px;
   }
 
   .student__img {
-    margin: 19px 0 0;
+    margin: 20px 0 0;
   }
 
   .wrapper {
@@ -313,19 +317,27 @@
   }
 
   .student__name {
-    margin: 25px 0 7px;
+    margin: 29px 0 9px;
   }
 
   .student__link {
-    margin-top: -5px;
+    margin-top: 0px;
   }
 
   .portfolio {
-    margin: 65px 0 0 -10px;
+    margin: 70px 0 0 -10px;
   }
 
   .portfolio__link {
     width: 102%;
-    margin-top: -2px;
+    margin-top: -10px;
+  }
+
+  .portfolio__divider {
+    margin-top: -12px;
+  }
+  
+  .portfolio__link::after {
+    margin-top: 0;
   }
 }
