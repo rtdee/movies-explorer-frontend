@@ -13,38 +13,6 @@ class Api {
       }
     })
   }
-
-  postNewMovie(data, token) {
-    return request(`${this.baseUrl}/movies`, {
-      method: 'POST',
-      headers: {
-        ...this.headers,
-        'Authorization': `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        country: data.country,
-        director: data.director,
-        duration: data.duration,
-        year: data.year,
-        description: data.description,
-        image: data.image,
-        trailerLink: data.trailerLink,
-        thumbnail: data.thumbnail,
-        nameRU: data.nameRU,
-        nameEN: data.nameEN,
-      })
-    })
-  }
-
-  deleteMovie(movieId, token) {
-    return request(`${this.baseUrl}/movies/${movieId}`, {
-      method: 'DELETE',
-      headers: {
-        ...this.headers,
-        'Authorization': `Bearer ${token}`,
-      }
-    })
-  }
 }
 
 export const moviesApi = new Api({
