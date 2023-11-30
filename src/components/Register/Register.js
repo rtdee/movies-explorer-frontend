@@ -12,6 +12,7 @@ function Register(props) {
   const [emailErrorVisible, setEmailErrorVisible] = React.useState(false);
   const [passwordErrorVisible, setPasswordErrorVisible] = React.useState(false);
   const [formErrorVisible, setFormErrorVisible] = React.useState(false);
+  const [isBtnDisabled, setIsBtnDisabled] = React.useState(true);
 
   function handleUsernameInput(evt) {
     setUsername(evt.target.value);
@@ -29,6 +30,9 @@ function Register(props) {
     } else {
       setEmailErrorVisible(false);
     }
+    if (evt.target.value.length < 1) {
+      setIsBtnDisabled(true);
+    }
   }
 
   function handlePasswordInput(evt) {
@@ -43,17 +47,23 @@ function Register(props) {
   React.useEffect(() => {
     if (usernameErrorVisible || emailErrorVisible || passwordErrorVisible) {
       setFormErrorVisible(true);
+      setIsBtnDisabled(true);
     } else {
       setFormErrorVisible(false);
+      setIsBtnDisabled(false);
     }
   }, [usernameErrorVisible, emailErrorVisible, passwordErrorVisible])
+
+  React.useEffect(() => {
+    setIsBtnDisabled(true);
+  }, [])
 
   function handleSubmit(evt) {
     evt.preventDefault();
     if (formErrorVisible) {
       return;
     }
-    // props.onSubmit({email, password});
+    props.onSubmit({username, email, password})
   }
   return (
     <main>
@@ -102,7 +112,7 @@ function Register(props) {
             onChange={handlePasswordInput}
           />
           <span className={`register-form__error ${formErrorVisible && 'register-form__error_visible'}`}>Что-то пошло не так...</span>
-          <button className='register-form__submit-button' type='submit'>Зарегистрироваться</button>
+          <button className='register-form__submit-button' type='submit' disabled={isBtnDisabled}>Зарегистрироваться</button>
         </form>
         <p className='register__text'>Уже зарегистрированы? <Link className='register__link' to='/login'>Войти</Link></p>
       </div>

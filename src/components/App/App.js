@@ -13,6 +13,12 @@ import Profile from '../Profile/Profile';
 import NavMenu from '../NavMenu/NavMenu';
 import Footer from '../Footer/Footer';
 
+import ProtectedRoute from '../../utils/ProtectedRoute';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
+import { api } from '../../utils/MainApi.js';
+import { register, authorize, checkToken } from '../../utils/auth.js';
+import { moviesApi } from '../../utils/MoviesApi.js';
+
 function App() {
   const navigate = useNavigate();
 
@@ -37,8 +43,56 @@ function App() {
     )
   }
 
-  const [loggedIn, setLoggedIn] = React.useState(true);
+  const [loggedIn, setLoggedIn] = React.useState(false);
   const [isNavMenuOpened, setIsNavMenuOpened] = React.useState(false);
+  const [currentUser, setCurrentUser] = React.useState({});
+  const [errortext, setErrortext] = React.useState('');
+  const [isErrorVisible, setIsErrorVisible] = React.useState(false);
+  const [movies, setMovies] = React.useState([]);
+
+
+  function showError(text) {
+    setErrortext(`Что-то пошло не так: ${text}`);
+    setIsErrorVisible(true);
+    setTimeout(() => {
+      setIsErrorVisible(false);
+      setErrortext('');
+    }, 3000);
+  }
+
+   React.useEffect(() => {
+     moviesApi.getMovies()
+     .then((res) => {
+      const arr = [];
+      res.forEach(movie => {
+        arr.push(movie)
+      });
+      localStorage.setItem('movies', JSON.stringify(arr));
+     })
+     .catch(err => showError(err));
+  }, []);
+
+
+  React.useEffect(() => {
+    setMovies(JSON.parse(localStorage.getItem('movies')));
+  }, [])
+
+   React.useEffect(() => {
+     handleTokenCheck();
+   }, []);
+
+  React.useEffect(() => {
+    const token = localStorage.getItem('token');
+    api.getUserInfo(token)
+      .then((res) => {
+        setCurrentUser({
+          username: res.username,
+          email: res.email,
+        });
+      })
+      .catch(err => showError(err));
+  }, []);
+
 
   function handleCloseNavMenu() {
     setIsNavMenuOpened(false);
@@ -49,42 +103,98 @@ function App() {
     handleCloseNavMenu();
   }
 
-  function handleEditProfile() {
+  function handleEditProfile(data) {
+    const token = localStorage.getItem('token');
+    api.patchUserInfo(data, token)
+    .then(() => {
+      setCurrentUser({
+        username: data.username,
+        email: data.email,
+      });
+    })
+    .catch(err => showError(err));
   }
 
-  function handleLogin({email, password}) {
-    alert({email, password})
-    setLoggedIn(true);
-    navigate('/')
+  function handleLogin(data) {
+    authorize(data)
+    .then((res) => {
+      if (res) {
+        localStorage.setItem('token', res);
+        return res;
+      }
+    })
+    .then(() => {
+      handleTokenCheck();
+    })
+    .catch(err => showError(err));
   }
 
-  function handleLogout() {
+   function handleLogout() {
+    localStorage.removeItem('token');
     setLoggedIn(false);
     navigate('/');
+   }
+
+  function handleSignup(data) {
+    register(data)
+    .then(res => console.log(res))
+    .catch(err => showError(err));
   }
 
+  function handleTokenCheck() {
+    if (localStorage.getItem('token')) {
+      const token = localStorage.getItem('token')
+      checkToken(token)
+        .then((res) => {
+          if (res) {
+            setLoggedIn(true);
+            return res;
+          }
+        })
+        // .then(() => {
+        //   navigate('/', { replace: true })
+        // })
+        .catch(err => showError(err));
+    }
+  }
 
   return (
-    <div className='app'>
-      <Routes>
-        <Route element={<HeaderLayout />}>
-          <Route element={<FooterLayout />}>
-            <Route path='/' element={<Main />} />
-            <Route path='/movies' element={<Movies isSaved={false}/>} />
-            <Route path='/saved-movies' element={<Movies isSaved={true} />} />
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className='app'>
+        <span className={`app__error-span ${isErrorVisible && 'app__error-span_visible'}`}>{errortext}</span>
+        <Routes>
+          <Route element={<HeaderLayout />}>
+            <Route element={<FooterLayout />}>
+              <Route path='/' element={<Main />} />
+              <Route path='/movies' element={
+                <ProtectedRoute loggedIn={loggedIn} element={
+                  <Movies isSaved={false}
+                          movies={movies}
+                  />}
+                />
+              }/>
+              <Route path='/saved-movies' element={
+                <ProtectedRoute loggedIn={loggedIn} element={
+                  <Movies isSaved={true} />}
+                />
+              }/>
+            </Route>
+            <Route path='/profile' element={
+              <ProtectedRoute loggedIn={loggedIn} element={
+                <Profile onEditProfile={handleEditProfile}
+                         onLogout={handleLogout} />}
+              />
+            }/>
           </Route>
-          <Route path='/profile' element={
-            <Profile onEditProfile={handleEditProfile}
-                     onLogout={handleLogout} />} />
-        </Route>
-        <Route path='/login' element={<Login onSubmit={handleLogin}/>} />
-        <Route path='/signup' element={<Register />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-      <NavMenu isOpened={isNavMenuOpened}
-               onClickProfile={handleClickProfile}
-               onClose={handleCloseNavMenu} />
-    </div>
+          <Route path='/login' element={<Login onSubmit={handleLogin}/>} />
+          <Route path='/signup' element={<Register onSubmit={handleSignup} />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+        <NavMenu isOpened={isNavMenuOpened}
+                 onClickProfile={handleClickProfile}
+                 onClose={handleCloseNavMenu} />
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 

@@ -2,25 +2,31 @@ import './Card.css';
 
 import React from 'react';
 
-import filmpic from '../../images/filmpic.jpg';
-
 function Card(props) {
   const [isFilmSaved, setIsFilmSaved] = React.useState(false);
-  
+
+  const filmURL = 'https://api.nomoreparties.co';
+
   function handleSaveFilmClick() {
-    setIsFilmSaved(!false);
+    setIsFilmSaved(!isFilmSaved);
+    props.saveMovie(props.card);
+  }
+
+  function handleDeleteFilmClick() {
+    setIsFilmSaved(false);
+    props.deleteMovie(props.card);
   }
 
   return (
     <article className='card'>
       <div className='card__img-container'>
-        <img className='card__img' alt='img' src={filmpic}></img>
-        {props.isSaved ? <button className='saved-card__delete-btn'></button> :
-        <button className={`card__save-btn ${isFilmSaved && 'card__save-btn_active'}`} onClick={handleSaveFilmClick}>{!isFilmSaved && 'Сохранить'}</button>}
+        <img className='card__img' alt='img' src={`${filmURL}${props.card.image.url}`}></img>
+        {props.isSaved ? <button className='saved-card__delete-btn' onClick={handleDeleteFilmClick}></button> :
+        <button className={`card__save-btn ${isFilmSaved && 'card__save-btn_active'}`} onClick={!isFilmSaved ? handleSaveFilmClick : handleDeleteFilmClick}>{!isFilmSaved && 'Сохранить'}</button>}
       </div>
       <div className='card__text-container'>
-        <h2 className='card__title'>33 слова о дизайне</h2>
-        <p className='card__duration'>1ч 17м</p>
+        <h2 className='card__title'>{props.card.nameRU}</h2>
+        <p className='card__duration'>{`${Math.floor(props.card.duration / 60)}ч ${props.card.duration % 60}м`}</p>
       </div>
     </article>
   )

@@ -123,6 +123,11 @@
   color:rgba(0, 0, 0, .7)
 }
 
+.login-form__submit-button:disabled {
+  cursor: not-allowed;
+  background-color: rgba(0, 0, 0, .4);
+}
+
 @media screen and (min-width: 430px) and (max-width: 768px) {
   .login {
     margin: 232px 0 0;

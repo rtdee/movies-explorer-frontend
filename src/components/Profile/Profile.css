@@ -109,6 +109,18 @@
   font-weight: 500;
   line-height: normal;
   cursor: pointer;
+  outline: none;
+  border: 0;
+  transition: background-color .2s ease;
+}
+
+.profile-form__button:hover {
+  background-color: rgba(52, 86, 243, .7);
+}
+
+.profile-form__button:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
 }
 
 @media screen and (min-width: 430px) and (max-width: 768px) {
@@ -123,7 +135,6 @@
   .profile-form__links {
     margin-top: 207px;
   }
-
 }
 
 @media screen and (min-width: 0px) and (max-width: 430px) {
@@ -138,7 +149,12 @@
   .profile-form__divider {
     width: 260px;
   }
+
   .profile-form__input-container {
+    width: 260px;
+  }
+
+  .profile-form__button {
     width: 260px;
   }
 

@@ -7,6 +7,15 @@
   align-self: center;
 }
 
+.nothing-found {
+  display: flex;
+  align-self: center;
+  text-align: center;
+  color: #A0A0A0;
+  font-size: 12px;
+  margin: auto;
+}
+
 .movies__search {
   display: flex;
   flex-direction: row;
