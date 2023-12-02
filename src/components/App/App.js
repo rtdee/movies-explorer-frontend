@@ -136,6 +136,7 @@ function App() {
    }
 
   function handleSignup(data) {
+    alert(data);
     register(data)
     .then(res => console.log(res))
     .catch(err => showError(err));

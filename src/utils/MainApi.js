@@ -31,9 +31,9 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'https://api.rtdmovies.nomoredomainsicu.ru',
+  baseUrl: 'api.rtdmovies.nomoredomainsicu.ru',
   headers: {
-    'Access-Control-Allow-Origin': 'https://api.rtdmovies.nomoredomainsicu.ru',
+    'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
     'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, Accept, Authorization, X-Requested-With',
     'Accept': 'application/json',
