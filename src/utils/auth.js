@@ -1,6 +1,6 @@
 import { request } from './request.js';
 
-export const BASE_URL = 'http://localhost:5000';
+export const BASE_URL = 'https://api.rtdmovies.nomoredomainsicu.ru';
 
 export const register = ({username, email, password}) => {
   return request(`${BASE_URL}/signup`, {
@@ -28,7 +28,7 @@ export const checkToken = (token) => {
   return request(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {
-      'Access-Control-Allow-Origin': 'http://localhost:5000',
+      'Access-Control-Allow-Origin': 'https://api.rtdmovies.nomoredomainsicu.ru',
       'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
       'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token,  Accept, Authorization, X-Requested-With',
       'Accept': 'application/json',
