@@ -50,7 +50,6 @@ function App() {
   const [isErrorVisible, setIsErrorVisible] = React.useState(false);
   const [movies, setMovies] = React.useState([]);
 
-
   function showError(text) {
     setErrortext(`Что-то пошло не так: ${text}`);
     setIsErrorVisible(true);
@@ -59,6 +58,16 @@ function App() {
       setErrortext('');
     }, 3000);
   }
+
+  React.useEffect(() => {
+    if (!localStorage.getItem('savedMovies')) {
+      localStorage.setItem('savedMovies', JSON.stringify([]));
+    }
+
+    if (!localStorage.getItem('movies')) {
+      localStorage.setItem('movies', JSON.stringify([]));
+    }
+  }, [])
 
    React.useEffect(() => {
      moviesApi.getMovies()
