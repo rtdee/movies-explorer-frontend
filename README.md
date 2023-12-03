@@ -8,4 +8,4 @@
 
 ## 130.193.51.202
 
-# https://github.com/rtdee/movies-explorer-frontend/pull/7
+# https://github.com/rtdee/movies-explorer-frontend/pull/8
