@@ -20,7 +20,7 @@ function Card(props) {
   return (
     <article className='card'>
       <div className='card__img-container'>
-        <img className='card__img' alt='img' src={`${filmURL}${props.card.image.url}`}></img>
+        <img className='card__img' alt='img' src={!props.isSaved ? `${filmURL}${props.card.image.url}` : props.card.image}></img>
         {props.isSaved ? <button className='saved-card__delete-btn' onClick={handleDeleteFilmClick}></button> :
         <button className={`card__save-btn ${isFilmSaved && 'card__save-btn_active'}`} onClick={!isFilmSaved ? handleSaveFilmClick : handleDeleteFilmClick}>{!isFilmSaved && 'Сохранить'}</button>}
       </div>

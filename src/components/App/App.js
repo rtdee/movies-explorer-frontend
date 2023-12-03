@@ -49,6 +49,7 @@ function App() {
   const [errortext, setErrortext] = React.useState('');
   const [isErrorVisible, setIsErrorVisible] = React.useState(false);
   const [movies, setMovies] = React.useState([]);
+  const [savedMovies, setSavedMovies] = React.useState([])
 
   function showError(text) {
     setErrortext(`Что-то пошло не так: ${text}`);
@@ -58,16 +59,6 @@ function App() {
       setErrortext('');
     }, 3000);
   }
-
-  React.useEffect(() => {
-    if (!localStorage.getItem('savedMovies')) {
-      localStorage.setItem('savedMovies', JSON.stringify([]));
-    }
-
-    if (!localStorage.getItem('movies')) {
-      localStorage.setItem('movies', JSON.stringify([]));
-    }
-  }, [])
 
    React.useEffect(() => {
      moviesApi.getMovies()
@@ -81,6 +72,22 @@ function App() {
      .catch(err => showError(err));
   }, []);
 
+  React.useEffect(() => {
+    const token = localStorage.getItem('token');
+    api.getSavedMovies(token)
+    .then((res) => {
+      if (res) {
+        const arr = [];
+        res.forEach(movie => {
+          arr.push(movie)
+        });
+        setSavedMovies(arr)
+      } else {
+        setSavedMovies([])
+      }
+    })
+    .catch(err => showError(err));
+  }, []);
 
   React.useEffect(() => {
     setMovies(JSON.parse(localStorage.getItem('movies')));
@@ -140,12 +147,12 @@ function App() {
 
    function handleLogout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('search');
     setLoggedIn(false);
     navigate('/');
    }
 
   function handleSignup(data) {
-    alert(data);
     register(data)
     .then(res => console.log(res))
     .catch(err => showError(err));
@@ -168,6 +175,13 @@ function App() {
     }
   }
 
+  function handleSaveMovie(movie) {
+    const token = localStorage.getItem('token');
+    api.saveMovie(movie, token)
+    .then(res => console.log(res))
+    .catch(err => showError(err));
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className='app'>
@@ -180,12 +194,15 @@ function App() {
                 <ProtectedRoute loggedIn={loggedIn} element={
                   <Movies isSaved={false}
                           movies={movies}
+                          saveMovie={handleSaveMovie}
                   />}
                 />
               }/>
               <Route path='/saved-movies' element={
                 <ProtectedRoute loggedIn={loggedIn} element={
-                  <Movies isSaved={true} />}
+                  <Movies isSaved={true}
+                          savedMovies={savedMovies}
+                  />}
                 />
               }/>
             </Route>

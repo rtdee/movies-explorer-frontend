@@ -10,12 +10,17 @@ function Movies(props) {
   const [nothingFoundSaved, setNothingFoundSaved] = React.useState(false);
   const [nothingFound, setNothingFound] = React.useState(false);
   const [inputValue, setInputValue] = React.useState(JSON.parse(localStorage.getItem('search')));
+  const [savedMovies, setSavedMovies] = React.useState([]);
+  const [moviesCards, setMoviesCards] = React.useState([]);
+  const movies = JSON.parse(localStorage.getItem('movies'));
 
   React.useEffect(() => {
-    if (!localStorage.getItem('savedMovies')) {
-      localStorage.setItem('savedMovies', JSON.stringify([]));
+    if (props.savedMovies !== undefined) {
+      setSavedMovies(props.savedMovies);
     }
+  }, []);
 
+  React.useEffect(() => {
     if (!localStorage.getItem('movies')) {
       localStorage.setItem('movies', JSON.stringify([]));
     }
@@ -37,11 +42,11 @@ function Movies(props) {
     }
 
     if (isShorfilmChecked && props.isSaved) {
-      const savedMoviesList = JSON.parse(localStorage.getItem('savedMovies'));
+      const savedMoviesList = savedMovies;
       const filtered = savedMoviesList.filter(item => item.duration < 60);
-      localStorage.setItem('savedMovies', JSON.stringify(filtered));
+      setSavedMovies(filtered);
     }
-  }, [props.isSaved, isShorfilmChecked, handleSubmit, handleSubmitSaved])
+  }, [props.isSaved, isShorfilmChecked, savedMovies])
 
   function handleMoreClick() {
     setIsMoreActive(true);
@@ -51,13 +56,7 @@ function Movies(props) {
     setInputValue(evt.target.value);
   }
 
-  const movies = JSON.parse(localStorage.getItem('movies')).map((card) => {
-    return (
-      <Card card={card} isSaved={false} saveMovie={handleSaveMovie}/>
-    )
-  });
-
-  const savedMovies = JSON.parse(localStorage.getItem('savedMovies')).map((card) => {
+  const savedMoviesCards = savedMovies.map((card) => {
     return (
       <Card card={card} isSaved={true} deleteMovie={handleDeleteMovie}/>
      )
@@ -75,27 +74,30 @@ function Movies(props) {
     } else {
       setNothingFound(false);
     }
-  }, []);
+  }, [movies.length, savedMovies.length]);
 
   
   function handleSaveMovie(movie) {
-    let savedMoviesListNew = JSON.parse(localStorage.getItem('savedMovies'));
-    savedMoviesListNew.push(movie);
-    localStorage.setItem('savedMovies', JSON.stringify(savedMoviesListNew));
+    props.saveMovie(movie);
   }
 
   function handleDeleteMovie(movie) {
-    const savedMoviesList = JSON.parse(localStorage.getItem('savedMovies'));
-    const filtered = savedMoviesList.filter(item => item.id !== movie.id);
-    localStorage.setItem('savedMovies', JSON.stringify(filtered));
+    const filtered = savedMoviesCards.filter(item => item.props.card._id === movie.id);
+    setSavedMovies(filtered);
+    console.log(savedMovies)
+    console.log(savedMoviesCards)
   }
 
   function handleSubmit(evt) {
     evt.preventDefault();
     const moviesList = JSON.parse(localStorage.getItem('movies'));
     const filtered = moviesList.filter(item => item.nameRU.toLowerCase().includes(inputValue.toLowerCase()));
-    localStorage.setItem('movies', JSON.stringify(filtered));
     localStorage.setItem('search', JSON.stringify(inputValue));
+    setMoviesCards(filtered.map((card) => {
+      return (
+        <Card card={card} isSaved={false} saveMovie={handleSaveMovie}/>
+      )
+    })); 
   }
 
   function handleSubmitSaved(evt) {
@@ -128,7 +130,7 @@ function Movies(props) {
       {props.isSaved && nothingFoundSaved && <p className='nothing-found'>Ничего не найдено</p>}
       {!props.isSaved && nothingFound && <p className='nothing-found'>Ничего не найдено</p>}
       <div className='movies__container'>
-        {!props.isSaved ? <>{movies}</> : <>{savedMovies}</>}
+        {!props.isSaved ? <>{moviesCards}</> : <>{savedMoviesCards}</>}
       </div>
       {!props.isSaved && !isMoreActive && <button className={!isMoreActive ? 'movies__button' : 'hidden'} onClick={handleMoreClick}>Ещё</button>}
     </section>
