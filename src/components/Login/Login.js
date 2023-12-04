@@ -6,11 +6,10 @@ import Logo from '../Logo/Logo';
 function Login(props) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-
-  const [emailErrorVisible, setEmailErrorVisible] = React.useState(false);
-  const [passwordErrorVisible, setPasswordErrorVisible] = React.useState(false);
+  const [emailErrorVisible, setEmailErrorVisible] = React.useState(true);
+  const [passwordErrorVisible, setPasswordErrorVisible] = React.useState(true);
   const [formErrorVisible, setFormErrorVisible] = React.useState(false);
-  const [isBtnDisabled, setIsBtnDisabled] = React.useState(false);
+  const [isBtnDisabled, setIsBtnDisabled] = React.useState(true);
 
   function handleEmailInput(evt) {
     setEmail(evt.target.value);
@@ -30,14 +29,6 @@ function Login(props) {
     }
   }
 
-  function handleSubmit(evt) {
-    evt.preventDefault();
-    if (formErrorVisible) {
-      return;
-    }
-    props.onSubmit({email, password});
-  }
-
   React.useEffect(() => {
     if (emailErrorVisible || passwordErrorVisible) {
       setFormErrorVisible(true);
@@ -47,11 +38,16 @@ function Login(props) {
       setIsBtnDisabled(false);
     }
   }, [emailErrorVisible, passwordErrorVisible])
-
-  React.useEffect(() => {
-    setIsBtnDisabled(true);
-  }, [])
   
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    if (formErrorVisible) {
+      return;
+    }
+    setIsBtnDisabled(true);
+    props.onSubmit({email, password});
+  }
+
   return (
     <main>
     <div className='login'>

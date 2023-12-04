@@ -1,9 +1,11 @@
 import './Card.css';
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Card(props) {
   const [isFilmSaved, setIsFilmSaved] = React.useState(false);
+  const navigate = useNavigate();
 
   const filmURL = 'https://api.nomoreparties.co';
 
@@ -19,7 +21,7 @@ function Card(props) {
 
   return (
     <article className='card'>
-      <div className='card__img-container'>
+      <div className='card__img-container' onClick={navigate(props.card.trailerLink)}>
         <img className='card__img' alt='img' src={!props.isSaved ? `${filmURL}${props.card.image.url}` : props.card.image}></img>
         {props.isSaved ? <button className='saved-card__delete-btn' onClick={handleDeleteFilmClick}></button> :
         <button className={`card__save-btn ${isFilmSaved && 'card__save-btn_active'}`} onClick={!isFilmSaved ? handleSaveFilmClick : handleDeleteFilmClick}>{!isFilmSaved && 'Сохранить'}</button>}

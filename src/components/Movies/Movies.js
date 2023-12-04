@@ -13,12 +13,13 @@ function Movies(props) {
   const [savedMovies, setSavedMovies] = React.useState([]);
   const [moviesCards, setMoviesCards] = React.useState([]);
   const movies = JSON.parse(localStorage.getItem('movies'));
+  const [savedMoviesCards, setSavedMoviesCards] = React.useState([]);
 
   React.useEffect(() => {
     if (props.savedMovies !== undefined) {
       setSavedMovies(props.savedMovies);
     }
-  }, []);
+  }, [handleDeleteMovie, props.savedMovies]);
 
   React.useEffect(() => {
     if (!localStorage.getItem('movies')) {
@@ -26,8 +27,19 @@ function Movies(props) {
     }
 
     if (!localStorage.getItem('search')) {
-      localStorage.setItem('search', JSON.stringify(inputValue));
+      localStorage.setItem('search', JSON.stringify(inputValue, isShorfilmChecked));
     }
+
+    if (!localStorage.getItem('results')) {
+      localStorage.setItem('results', JSON.stringify([]));
+    }
+
+    let res = JSON.parse(localStorage.getItem('results'));
+    setMoviesCards(res.map((card) => {
+      return (
+        <Card card={card} isSaved={false} saveMovie={handleSaveMovie}/>
+      )
+    }));
   }, [])
 
   function handleSwitchClick() {
@@ -43,7 +55,7 @@ function Movies(props) {
 
     if (isShorfilmChecked && props.isSaved) {
       const savedMoviesList = savedMovies;
-      const filtered = savedMoviesList.filter(item => item.duration < 60);
+      const filtered = savedMoviesList.filter(item => item.duration <= 40);
       setSavedMovies(filtered);
     }
   }, [props.isSaved, isShorfilmChecked, savedMovies])
@@ -56,36 +68,36 @@ function Movies(props) {
     setInputValue(evt.target.value);
   }
 
-  const savedMoviesCards = savedMovies.map((card) => {
-    return (
-      <Card card={card} isSaved={true} deleteMovie={handleDeleteMovie}/>
-     )
-  });
+  React.useEffect(() => {
+    setSavedMoviesCards(savedMovies.map((card) => {
+      return (
+        <Card card={card} isSaved={true} deleteMovie={handleDeleteMovie}/>
+       )
+    }));
+  }, [handleDeleteMovie, savedMovies])
 
   React.useEffect(() => {
-    if (savedMovies.length < 1) {
+    if (savedMoviesCards.length < 1) {
       setNothingFoundSaved(true);
     } else {
       setNothingFoundSaved(false);
     }
 
-    if (movies.length < 1) {
+    if (moviesCards.length < 1) {
       setNothingFound(true);
     } else {
       setNothingFound(false);
     }
-  }, [movies.length, savedMovies.length]);
+  }, [moviesCards.length, savedMoviesCards.length]);
 
   
   function handleSaveMovie(movie) {
     props.saveMovie(movie);
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function handleDeleteMovie(movie) {
-    const filtered = savedMoviesCards.filter(item => item.props.card._id === movie.id);
-    setSavedMovies(filtered);
-    console.log(savedMovies)
-    console.log(savedMoviesCards)
+    props.deleteMovie(movie)
   }
 
   function handleSubmit(evt) {
@@ -97,15 +109,19 @@ function Movies(props) {
       return (
         <Card card={card} isSaved={false} saveMovie={handleSaveMovie}/>
       )
-    })); 
+    }));
+    localStorage.setItem('results', JSON.stringify(filtered));
   }
 
   function handleSubmitSaved(evt) {
     evt.preventDefault();
-    const savedMoviesList = JSON.parse(localStorage.getItem('savedMovies'));
+    const savedMoviesList = savedMovies;
     const filtered = savedMoviesList.filter(item => item.nameRU.toLowerCase().includes(inputValue.toLowerCase()));
-    localStorage.setItem('savedMovies', JSON.stringify(filtered));
-    localStorage.setItem('search', JSON.stringify(inputValue));
+    setSavedMoviesCards(filtered.map((card) => {
+      return (
+        <Card card={card} isSaved={true} deleteMovie={handleDeleteMovie}/>
+       )
+    }));
   }
 
   return (

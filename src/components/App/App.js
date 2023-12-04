@@ -12,8 +12,8 @@ import Header from '../Header/Header';
 import Profile from '../Profile/Profile';
 import NavMenu from '../NavMenu/NavMenu';
 import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../../utils/ProtectedRoute';
+
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 import { api } from '../../utils/MainApi.js';
 import { register, authorize, checkToken } from '../../utils/auth.js';
@@ -60,16 +60,16 @@ function App() {
     }, 3000);
   }
 
-   React.useEffect(() => {
-     moviesApi.getMovies()
-     .then((res) => {
-      const arr = [];
-      res.forEach(movie => {
+  React.useEffect(() => {
+    moviesApi.getMovies()
+      .then((res) => {
+        const arr = [];
+        res.forEach(movie => {
         arr.push(movie)
-      });
-      localStorage.setItem('movies', JSON.stringify(arr));
-     })
-     .catch(err => showError(err));
+        });
+        localStorage.setItem('movies', JSON.stringify(arr));
+      })
+      .catch(err => showError(err));
   }, []);
 
   React.useEffect(() => {
@@ -93,9 +93,9 @@ function App() {
     setMovies(JSON.parse(localStorage.getItem('movies')));
   }, [])
 
-   React.useEffect(() => {
-     handleTokenCheck();
-   }, []);
+  React.useEffect(() => {
+    handleTokenCheck();
+  }, []);
 
   React.useEffect(() => {
     const token = localStorage.getItem('token');
@@ -108,7 +108,6 @@ function App() {
       })
       .catch(err => showError(err));
   }, []);
-
 
   function handleCloseNavMenu() {
     setIsNavMenuOpened(false);
@@ -142,6 +141,9 @@ function App() {
     .then(() => {
       handleTokenCheck();
     })
+    .then(() => {
+      navigate('/movies')
+    })
     .catch(err => showError(err));
   }
 
@@ -154,8 +156,9 @@ function App() {
 
   function handleSignup(data) {
     register(data)
-    .then(res => console.log(res))
-    .catch(err => showError(err));
+      .then(() => handleTokenCheck())
+      .then(() => navigate('/movies'))
+      .catch(err => showError(err));
   }
 
   function handleTokenCheck() {
@@ -182,6 +185,13 @@ function App() {
     .catch(err => showError(err));
   }
 
+  function handleDeleteMovie(movie) {
+    const token = localStorage.getItem('token');
+    api.deleteMovie(movie, token)
+    .then(res => console.log(res))
+    .catch(err => showError(err));
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className='app'>
@@ -195,6 +205,7 @@ function App() {
                   <Movies isSaved={false}
                           movies={movies}
                           saveMovie={handleSaveMovie}
+                          deleteMovie={handleDeleteMovie}
                   />}
                 />
               }/>
@@ -202,6 +213,7 @@ function App() {
                 <ProtectedRoute loggedIn={loggedIn} element={
                   <Movies isSaved={true}
                           savedMovies={savedMovies}
+                          deleteMovie={handleDeleteMovie}
                   />}
                 />
               }/>

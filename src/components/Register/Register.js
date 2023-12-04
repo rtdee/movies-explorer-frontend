@@ -30,9 +30,6 @@ function Register(props) {
     } else {
       setEmailErrorVisible(false);
     }
-    if (evt.target.value.length < 1) {
-      setIsBtnDisabled(true);
-    }
   }
 
   function handlePasswordInput(evt) {
@@ -63,6 +60,7 @@ function Register(props) {
     if (formErrorVisible) {
       return;
     }
+    setIsBtnDisabled(true)
     props.onSubmit({username, email, password})
   }
   return (

@@ -39,6 +39,19 @@ class Api {
     })
   }
 
+  deleteMovie(data, token) {
+    return request(`${this.baseUrl}/movies/${data._id}`, {
+      method: 'DELETE',
+      headers: {
+        ...this.headers,
+        'Authorization': `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        movieId: data._id
+      })
+    });
+  }
+
   getUserInfo(token) {
     return request(`${this.baseUrl}/users/me`, {
       headers: {
