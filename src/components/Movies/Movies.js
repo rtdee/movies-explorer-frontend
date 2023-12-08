@@ -3,6 +3,7 @@ import './Movies.css';
 import React from 'react';
 
 import Card from '../Card/Card';
+import Preloader from '../Preloader/Preloader';
 
 function Movies(props) {
   const [isShorfilmChecked, setIsShortfilmChecked] = React.useState(false);
@@ -12,8 +13,8 @@ function Movies(props) {
   const [inputValue, setInputValue] = React.useState(JSON.parse(localStorage.getItem('search')));
   const [savedMovies, setSavedMovies] = React.useState([]);
   const [moviesCards, setMoviesCards] = React.useState([]);
-  const movies = JSON.parse(localStorage.getItem('movies'));
   const [savedMoviesCards, setSavedMoviesCards] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
     if (props.savedMovies !== undefined) {
@@ -49,8 +50,23 @@ function Movies(props) {
   React.useEffect(() => {
     if (isShorfilmChecked && !props.isSaved) {
       const moviesList = JSON.parse(localStorage.getItem('movies'));
-      const filtered = moviesList.filter(item => item.duration < 60);
-      localStorage.setItem('movies', JSON.stringify(filtered));
+      const filtered = moviesList.filter(item => item.duration <= 40);
+      localStorage.setItem('results', JSON.stringify(filtered))
+      let res = JSON.parse(localStorage.getItem('results'));
+      setMoviesCards(res.map((card) => {
+        return (
+          <Card card={card} isSaved={false} saveMovie={handleSaveMovie}/>
+        )
+      }));
+    }
+
+    if (!isShorfilmChecked && !props.isSaved) {
+      const moviesList = JSON.parse(localStorage.getItem('movies'));
+      setMoviesCards(moviesList.map((card) => {
+        return (
+          <Card card={card} isSaved={false} saveMovie={handleSaveMovie}/>
+        )
+      }));
     }
 
     if (isShorfilmChecked && props.isSaved) {
@@ -61,7 +77,32 @@ function Movies(props) {
   }, [props.isSaved, isShorfilmChecked, savedMovies])
 
   function handleMoreClick() {
-    setIsMoreActive(true);
+    let res = JSON.parse(localStorage.getItem('results'));
+    if (window.innerWidth > 768) {
+      setIsMoreActive(true);
+      let newres = res.slice(moviesCards.length, 12)
+      setMoviesCards(newres.map((card) => {
+        return (
+          <Card card={card} isSaved={true} deleteMovie={handleDeleteMovie}/>
+         )
+      }));
+    } else if (window.innerWidth <= 768) {
+      setIsMoreActive(true);
+      let newres = res.slice(moviesCards.length, 8)
+      setMoviesCards((moviesCards.push(...newres)).map((card) => {
+        return (
+          <Card card={card} isSaved={true} deleteMovie={handleDeleteMovie}/>
+         )
+      }));
+    } else if (window.innerWidth <= 320) {
+      setIsMoreActive(true);
+      let newres = res.slice(moviesCards.length, 2)
+      setMoviesCards((moviesCards.push(...newres)).map((card) => {
+        return (
+          <Card card={card} isSaved={true} deleteMovie={handleDeleteMovie}/>
+         )
+      }));
+    }
   }
 
   function handleInputChange(evt) {
@@ -98,9 +139,17 @@ function Movies(props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   function handleDeleteMovie(movie) {
     props.deleteMovie(movie)
+    let filtered = savedMoviesCards.filter(e => e._id !== movie._id)
+    setSavedMoviesCards(filtered.map((card) => {
+      return (
+        <Card card={card} isSaved={true} deleteMovie={handleDeleteMovie}/>
+       )
+    }));
   }
 
   function handleSubmit(evt) {
+    setIsLoading(true);
+    props.getMovies();
     evt.preventDefault();
     const moviesList = JSON.parse(localStorage.getItem('movies'));
     const filtered = moviesList.filter(item => item.nameRU.toLowerCase().includes(inputValue.toLowerCase()));
@@ -111,6 +160,7 @@ function Movies(props) {
       )
     }));
     localStorage.setItem('results', JSON.stringify(filtered));
+    setIsLoading(false);
   }
 
   function handleSubmitSaved(evt) {
@@ -124,8 +174,40 @@ function Movies(props) {
     }));
   }
 
+  React.useEffect(() => {
+    let res = JSON.parse(localStorage.getItem('results'));
+    if (!isMoreActive) {
+      if (window.innerWidth > 768 && res.length > 12) {
+        setIsMoreActive(true);
+        let sliced = res.slice(0, 12)
+        setMoviesCards(sliced.map((card) => {
+          return (
+            <Card card={card} isSaved={true} deleteMovie={handleDeleteMovie}/>
+           )
+        }));
+      } else if (window.innerWidth <= 768 && res.length > 8) {
+        setIsMoreActive(true);
+        let sliced = res.slice(0, 8)
+        setMoviesCards(sliced.map((card) => {
+          console.log(card)
+          return (
+            <Card card={card} isSaved={true} deleteMovie={handleDeleteMovie}/>
+           )
+        }));
+      } else if (window.innerWidth <= 320 && res.length > 5) {
+        setIsMoreActive(true);
+        let sliced = res.slice(0, 5)
+        setMoviesCards(sliced.map((card) => {
+          return (
+            <Card card={card} isSaved={true} deleteMovie={handleDeleteMovie}/>
+           )
+        }));
+      }
+    }
+  }, [])
+
   return (
-    <section className={`movies ${!isMoreActive ? 'hidden' : ''}`}>
+    <section className='movies'>
       <search className='movies__search' role='search'>
         <form className='form' onSubmit={!props.isSaved ? handleSubmit : handleSubmitSaved}>
           <div className='form__wrapper'>
@@ -143,12 +225,13 @@ function Movies(props) {
         </form>
       </search>
       <div className='movies__divider'></div>
+      {isLoading ? <Preloader /> : <></>}
       {props.isSaved && nothingFoundSaved && <p className='nothing-found'>Ничего не найдено</p>}
       {!props.isSaved && nothingFound && <p className='nothing-found'>Ничего не найдено</p>}
       <div className='movies__container'>
         {!props.isSaved ? <>{moviesCards}</> : <>{savedMoviesCards}</>}
       </div>
-      {!props.isSaved && !isMoreActive && <button className={!isMoreActive ? 'movies__button' : 'hidden'} onClick={handleMoreClick}>Ещё</button>}
+      <button className='movies__button' onClick={handleMoreClick}>Ещё</button>
     </section>
   )
 }

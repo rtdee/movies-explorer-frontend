@@ -17,7 +17,7 @@ import ProtectedRoute from '../../utils/ProtectedRoute';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 import { api } from '../../utils/MainApi.js';
 import { register, authorize, checkToken } from '../../utils/auth.js';
-import { moviesApi } from '../../utils/MoviesApi.js';
+import { moviesApi } from '../../utils/MoviesApi.js'
 
 function App() {
   const navigate = useNavigate();
@@ -60,17 +60,17 @@ function App() {
     }, 3000);
   }
 
-  React.useEffect(() => {
+  function getMovies() {
     moviesApi.getMovies()
-      .then((res) => {
-        const arr = [];
-        res.forEach(movie => {
-        arr.push(movie)
-        });
-        localStorage.setItem('movies', JSON.stringify(arr));
-      })
-      .catch(err => showError(err));
-  }, []);
+    .then((res) => {
+      const arr = [];
+      res.forEach(movie => {
+      arr.push(movie)
+      });
+      localStorage.setItem('movies', JSON.stringify(arr));
+    })
+    .catch(err => showError(err));
+  }
 
   React.useEffect(() => {
     const token = localStorage.getItem('token');
@@ -206,6 +206,7 @@ function App() {
                           movies={movies}
                           saveMovie={handleSaveMovie}
                           deleteMovie={handleDeleteMovie}
+                          getMovies={getMovies}
                   />}
                 />
               }/>
