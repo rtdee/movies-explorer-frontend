@@ -23,6 +23,12 @@ function Card(props) {
     props.deleteMovie(props.card);
   }
 
+  React.useEffect(() => {
+    if (props.card.saved === true) {
+      setIsFilmSaved(true);
+    }
+  }, []);
+
   return (
     <article className='card'>
       <div className='card__img-container'>

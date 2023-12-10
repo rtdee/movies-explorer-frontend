@@ -134,6 +134,7 @@ function Movies(props) {
   
   function handleSaveMovie(movie) {
     props.saveMovie(movie);
+    movie.saved(true);
   }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
