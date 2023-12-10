@@ -1,0 +1,19 @@
+.header-menu-btn {
+  width: 44px;
+  min-height: 44px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  background-image: url('../../images/navmenu.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 0px) and (max-width: 720px) {
+  .header-menu-btn {
+    width: 23px;
+    min-height: 23px;
+    margin-right: 9px;
+  }
+}

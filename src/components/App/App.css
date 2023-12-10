@@ -1,0 +1,36 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', Arial, sans-serif;
+  justify-content: center;
+  max-width: 1280px;
+  position: relative;
+  margin: auto;
+}
+
+.app__error-span {
+  display: none;
+  position: fixed;
+  top: 10px;
+  z-index: 2;
+  text-align: center;
+  font-size: 10px;
+  color: #FF4062;
+  background-color: #c0c0c0;
+}
+
+.app__error-span_visible {
+  display: flex;
+}
+
+@media screen and (min-width: 430px) and (max-width: 768px) {
+  .app {
+    max-width: 768px;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 430px) {
+  .app {
+    max-width: 430px;
+  }
+}

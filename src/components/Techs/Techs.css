@@ -1,0 +1,245 @@
+.techs {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  background-color: #F5F5F5;
+  max-width: 1280px;
+  min-height: 625px;
+}
+
+.techs__container {
+  padding: 0 220px;
+  align-self: center;
+}
+
+.techs__header {
+  color: #000;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  margin: -14px 0 0 -220px;
+  align-self: flex-start;
+}
+
+.techs::before {
+  content: '';
+  border-bottom: 1px solid #000;
+  width: 100%;
+  min-height: 1px;
+  margin: 23px 0px 90px;
+  position: relative;
+  top: 126px;
+  align-self: center;
+}
+
+.techs__strong {
+  color: #000;
+  text-align: center;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -2px;
+  margin: 113px 0 26px;
+}
+
+.techs__paragraph {
+  color: #000;
+  text-align: center;
+  align-self: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.56px;
+  margin: 0 auto;
+  width: 460px;
+}
+
+.techs__icons-container {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  margin: 100px auto;
+  padding: 0;
+  justify-content: center;
+}
+
+.techs__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  min-height: 60px;
+  border-radius: 10px;
+  background-color: #E8E8E8;
+  margin: 0 5px;
+}
+
+.techs__icon-text {
+  color: #000;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.56px;
+  margin: 0;
+}
+
+@media screen and (min-width: 700px) and (max-width: 1200px) {
+  .techs {
+    max-width: 768px;
+    margin: 14px 0 0 0;
+    min-height: 500px;
+    max-height: 567px;
+  }
+
+  .techs__container {
+    position: relative;
+    top: -104px;
+    padding: 0;
+  }
+
+  .techs__header {
+    margin: 90px 0 0 10px;
+  }
+
+  .techs::before {
+    max-width: 668px;
+    margin: 23px 50px 80px;
+    top: 116px;
+  }
+
+  .techs__strong {
+    margin: 103px 0 21px;
+  }
+
+  .techs__paragraph {
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: -0.48px;
+    margin: auto;
+  }
+
+  .techs__icons-container {
+    margin: 84px 15px 0px;
+  }
+
+  .techs__icon {
+    width: 84px;
+    min-height: 57px;
+  }
+
+  .techs__icon-text {
+    font-size: 12px;
+    letter-spacing: -0.48px;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 700px) {
+  .techs {
+    max-width: 430px;
+    min-height: 651px;
+    background-color: #fff;
+    padding: 0 0 70px;
+  }
+
+  .techs__container {
+    padding: 0;
+  }
+
+  .techs::before {
+    width: 100%;
+    margin: 0;
+  }
+
+  .techs__header {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+    margin: 60px 0 0;
+  }
+
+  .techs__strong {
+    font-size: 30px;
+    letter-spacing: -1.2px;
+  }
+
+  .techs__paragraph {
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: -0.44px;
+    width: fit-content;
+  }
+
+  .techs__divider {
+    width: 100%;
+    margin: 23px 0 80px;
+  }
+
+  .techs__icons-container{
+    display: grid;
+    grid-auto-flow: row;
+    gap: 10px 0;
+    grid-template-columns: 1fr 1fr;
+    padding: 0px;
+    margin: 50px 0 0;
+  }
+
+  .techs__icon {
+    width: 84px;
+    min-height: 57px;
+  }
+
+  .techs__icon-text {
+    font-size: 12px;
+    letter-spacing: -0.48px;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 430px) {
+  .techs {
+    max-width: 320px;
+    margin: 0px 18px 0;
+    align-items: center;
+  }
+
+  .techs__container {
+    padding: 0;
+  }
+
+  .techs::before {
+    display: none;
+  }
+
+  .techs::after {
+    width: 284px;
+    content: '';
+    border-bottom: 1px solid #000;
+    position: relative;
+    top: -461px;
+  }
+
+  .techs__header {
+    margin: 36px 0 0;
+    position: relative;
+    top: 35px;
+    left: -12px;
+  }
+
+  .techs__container {
+    margin: 0;
+  }
+
+  .techs__paragraph {
+    width: 260px;
+    margin: -13px 0 0;
+  }
+
+  .techs__icons-container {
+    margin: 50px 0 0;
+    grid-template-columns: 94px 94px;
+  }
+}

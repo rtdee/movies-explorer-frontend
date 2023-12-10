@@ -1,0 +1,16 @@
+.logo {
+  width: 38px;
+  min-height: 38px;
+  margin: 0 8px;
+}
+
+.logo:hover {
+  opacity: .7;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 0px) and (max-width: 768px) {
+  .logo {
+    margin: 0;
+  }
+}
